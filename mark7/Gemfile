@@ -1,0 +1,9 @@
+source "http://rubygems.org"
+
+
+
+ gem "cucumber"
+ gem 'selenium-webdriver'
+ gem 'capybara'
+ gem 'rspec'
+ #bilioteca que não depende do cucumber para criar automação, possui validadores que turbinaram o cucumber para criar validações
