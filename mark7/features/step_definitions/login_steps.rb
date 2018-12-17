@@ -3,11 +3,11 @@
     visit 'https://mark7.herokuapp.com'
   end
   
-  Quando('eu faço o login com {string} e {string}') do |email, senha|
+  Quando('eu faço login com {string} e {string}') do |email, senha|
     @email = email
-    find('input[id=login_email]').set email
-    find('#login_password').set senha
-    click_button 'Login'
+    login = LoginPage.new
+    login.faz_login(email, senha)
+    #Instancia anônima LoginPage.new.faz_login(email, senha)
   end
   
   Então('devo ser autenticado com sucesso') do

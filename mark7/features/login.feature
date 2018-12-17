@@ -4,29 +4,23 @@ Funcionalidade: Login
     Sendo um Usuário
     Posso acessar o sistema com meu email e senha previamente cadastrados
 
-    
+    Contexto: Página principal
+        Dado que eu acesso a página principal
+
+    @logout
     Cenario: Usuário deve ser autorizado
-
-        Dado que eu acesso a página principal
-        Quando eu faço o login com "eu@papito.io" e "123456"
+        
+        Quando eu faço login com "eu@papito.io" e "123456"
         Então devo ser autenticado com sucesso 
-        #deve ver o email "eu@papito.io" no dashboard
         E devo ver a seguinte mensagem "Olá, Fernando"
-    @temp
-    Cenario: Senha Errada
 
-        Dado que eu acesso a página principal
-        Quando eu faço o login com "eu@papito.io" e "xpto123"
-        Então devo ver a seguinte mensagem "Senha inválida."
+    Esquema do Cenario: Tentativa de login
 
-    Cenario: Usuário não existe
+        Quando eu faço login com "<email>" e "<senha>"
+        Então devo ver a seguinte mensagem "<alerta>"
 
-        Dado que eu acesso a página principal
-        Quando eu faço o login com "eu@papito.net" e "xpto123"
-        Então devo ver a seguinte mensagem "Usuário não cadastrado."
-
-    Cenario: Email incorreto
-
-        Dado que eu acesso a página principal
-        Quando eu faço o login com "eupapito.io" e "xpto123"
-        Então devo ver a seguinte mensagem "Email incorreto ou ausente."
+        Exemplos: 
+        |email          |senha      |alerta|
+        |eu@papito.io   |xpto123    |Senha inválida.|
+        |eu@papito.net  |xpto123    |Usuário não cadastrado.|
+        |eupapito.net   |xpto123    |Email incorreto ou ausente.|
